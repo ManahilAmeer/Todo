@@ -1,0 +1,36 @@
+/* Style for heading */
+.heading{
+    text-align: center;
+    margin-top: 4vw;
+}
+/* Main Container */
+.container-md{
+    background-color:#7b4cd4 ;
+    padding: 1vw;
+    margin: 1.5vw;
+}
+/* Row for input */
+.row{
+    padding: 1vw;
+    max-width: 100%;
+    margin-left: 10vw;
+}
+.grid-child{
+    width: 30vw;
+}
+/* Table for the output list */
+.table{
+    border: 0.3vw solid #a570f0;
+    text-align: center;
+    background-color: white;
+    max-width: 75%;
+    margin: 30px auto;
+}
+/* Delete Icons */
+.material-icons{
+    cursor:default;
+}
+.material-icons:hover{
+    color: rgb(66, 66, 66);
+    transform: scale(1.25,1.25);
+}

@@ -1,14 +1,14 @@
 let arr = [[1], [2], [3]];
 delete arr[0];
+
 arr = [];
 
 let btn_add = document.getElementById("additem");
 let btn_delete = document.getElementById("deleted");
-// function to add item
+
 function get_update() {
-  
   let title = document.getElementById("title").value;
-  
+  // let desc = document.getElementById('description').value;
   if(title==""){
     alert("You have not entered any Item!!");
   }
@@ -17,11 +17,10 @@ function get_update() {
   }
   else{
   arr.push([title]);
-  show();
+  update();
 }
 }
-// Function to show the item on screen 
-function show() {
+function update() {
   str = "";
   arr.forEach((element, index) => {
     str =
@@ -35,13 +34,12 @@ function show() {
   document.getElementById("tableBody").innerHTML = str;
 }
 
-// function to delete item
 function deleted(item_index) {
   arr.splice(item_index, 1);
   console.log(arr);
   update();
 }
-// Adding event Listener to button
+
 btn_add.addEventListener("click", () => {
   get_update();
 });

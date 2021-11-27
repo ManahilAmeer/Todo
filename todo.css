@@ -4,12 +4,9 @@
 }
 .container-md{
     background-color:#7b4cd4 ;
-    /* border: 8px solid #acbc87; */
-    /* background-color: #accde3; */
-    /* padding: 2.5vw; */
-    /* display: inline-block; */
     padding: 1vw;
     margin: 1.5vw;
+    border-radius: 20px;
 }
 .row{
     padding: 1vw;
@@ -18,6 +15,7 @@
 }
 .grid-child{
     width: 30vw;
+    padding: .6vw;
 }
 .table{
     border: 0.3vw solid #a570f0;

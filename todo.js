@@ -10,14 +10,16 @@ let btn_add = document.getElementById("additem");
 let btn_delete = document.getElementById("deleted");
 let title = document.getElementById("title");
 title.focus();
+
 function get_update(input) {
   input = title.value;
   if (input == "") {
-    alert("You have not entered any Item!!");
+    document.getElementById("hidden").style.visibility="visible";
   } else {
     try {
       document.getElementById("temp").remove();
     } catch {}
+    document.getElementById("hidden").style.visibility = "hidden";
     id++;
     arr.push([input, id, false]);
 
@@ -50,4 +52,5 @@ document.onkeydown = function (ev) {
     ev.preventDefault();
     get_update();
   }
+  title.focus();
 };

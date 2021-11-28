@@ -1,12 +1,18 @@
 .heading{
     text-align: center;
-    margin-top: 10px;
+    margin-top: .73vw;
+}
+#hidden{
+    text-align: center;
+    color: red;
+    font-size: larger;
+    visibility: hidden;
 }
 .container-md{
     background-color:#7b4cd4 ;
     padding: 1vw;
     margin: 1.5vw;
-    border-radius: 20px;
+    border-radius: 1.46vw;
 }
 .row{
     padding: 1vw;
@@ -22,7 +28,7 @@
     text-align: center;
     background-color: white;
     max-width: 75%;
-    margin: 30px auto;
+    margin: 2.196vw auto;
 }
 
 .material-icons{

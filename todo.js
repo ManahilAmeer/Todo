@@ -11,6 +11,7 @@ let btn_delete = document.getElementById("deleted");
 let title = document.getElementById("title");
 title.focus();
 
+// Adding new to-do
 function get_update(input) {
   input = title.value;
   if (input == "") {
@@ -24,7 +25,7 @@ function get_update(input) {
     arr.push([input, id, false]);
 
     document.getElementById("tableBody").innerHTML += `<tr>
-        <td ><input type="checkbox" name="check" id="check" onchange="fun(this)"/></td>
+        <td ><input type="checkbox" name="check" id="check" onchange="check(this)"/></td>
         <td id="text">${input}</td>
         <td><i class="material-icons" onclick="deleted(this)">delete</i></td>
         </tr>`;
@@ -33,7 +34,7 @@ function get_update(input) {
   }
 }
 
-function fun(element) {
+function check(element) {
   if (element.checked) {
     element.setAttribute("checked", "checked");
   } else {

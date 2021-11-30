@@ -1,9 +1,9 @@
 let arr = [
-  [1, 01, true],
-  [2, 02, true],
-  [3, 03, false],
+  [1],
+  [2],
+  [3],
 ];
-delete arr[(0, 00, true)];
+delete arr[(0)];
 arr = [];
 let id = 0;
 let btn_add = document.getElementById("additem");
@@ -22,7 +22,7 @@ function get_update(input) {
     } catch {}
     document.getElementById("hidden").style.visibility = "hidden";
     id++;
-    arr.push([input, id, false]);
+    arr.push([input]);
 
     document.getElementById("tableBody").innerHTML += `<tr>
         <td ><input type="checkbox" name="check" id="check" onchange="check(this)"/></td>

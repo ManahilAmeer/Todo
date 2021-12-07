@@ -49,15 +49,6 @@ class Todo extends React.Component {
       alert(this.state.todoList[0].value)
     }
   }
-  
-  deleteTodo(key) {
-    const todoList = [...this.state.todoList];
-    const newList = todoList.filter((item) => item.id !== key);
-    this.setState({
-      todoList: newList,
-    });
-  }
-
   _keyDown = (e) => {
     if (e.key === "Enter") {
       this.addItem();

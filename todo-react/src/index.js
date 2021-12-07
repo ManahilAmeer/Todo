@@ -4,7 +4,7 @@ import App from "./App";
 import { MdDelete } from "react-icons/md";
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import TodoList from "./TodoList";
 class Todo extends React.Component {
   id = 0;
   inputRef = createRef();
@@ -41,38 +41,20 @@ class Todo extends React.Component {
         },
       };
       const todoList = [...this.state.todoList];
-      todoList.push(userInput);
+      this.state.todoList.push(userInput);
       this.setState({
-        todoList,
+        // todoList:todoList,
         userInput: "",
       });
+      alert(this.state.todoList[0].value)
     }
   }
+  
   deleteTodo(key) {
     const todoList = [...this.state.todoList];
     const newList = todoList.filter((item) => item.id !== key);
     this.setState({
       todoList: newList,
-    });
-  }
-  check(key, checked) {
-    const todoList = [...this.state.todoList];
-    var done, strikeThrough;
-    if (!checked) {
-      done = true;
-      strikeThrough = {
-        textDecoration: "line-through",
-      };
-    } else {
-      done = false;
-      strikeThrough = {
-        textDecoration: "none",
-      };
-    }
-    todoList[key].done = done;
-    todoList[key].strikeThrough = strikeThrough;
-    this.setState({
-      todoList: todoList,
     });
   }
 
@@ -113,28 +95,7 @@ class Todo extends React.Component {
                 </button>
               </div>
             </div>
-            <table>
-              <tbody>
-              {this.state.todoList.map((item, index) => {
-                return (
-                  <tr>
-                    <td>
-                      <input
-                        type="checkbox"
-                        name="check"
-                        onChange={() => this.check(index, item.done)}
-                        checked={item.done}
-                      />
-                      </td>
-                      <td style={item.strikeThrough}>{item.value}</td>
-                      <td>
-                      <MdDelete onClick={() => this.deleteTodo(item.id)} />
-                      </td>
-                  </tr>
-                );
-              })}
-              </tbody>
-            </table>
+            <TodoList todos={this.state.todoList} deleteTodo={this.deleteTodo}/>
           </div>
         </header>
       </div>

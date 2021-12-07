@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+*{
+  font-size: large;
+}
 .container {
   background-color: #7b4cd4;
   padding: 1vw;

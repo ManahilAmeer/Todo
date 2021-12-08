@@ -8,7 +8,7 @@ class TodoList extends React.Component{
     }
     constructor(props){
         super(props);
-        // alert(this.state.todoList[0].value)
+        
     }
     deleteTodo(key) {
         const todoList = [...this.state.todoList];
@@ -16,7 +16,7 @@ class TodoList extends React.Component{
         this.setState({
           todoList: newList,
         });
-        alert(this.state.todoList[0].value)
+        
       }
       check(key, checked) {
         const todoList = [...this.state.todoList];

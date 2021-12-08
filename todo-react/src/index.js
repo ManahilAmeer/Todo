@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "./TodoList";
-class Todo extends React.Component {
+class TodoApp extends React.Component {
   id = 0;
   inputRef = createRef();
   constructor(props) {
@@ -46,7 +46,7 @@ class Todo extends React.Component {
         // todoList:todoList,
         userInput: "",
       });
-      alert(this.state.todoList[0].value)
+      // alert(this.state.todoList[0].value)
     }
   }
   _keyDown = (e) => {
@@ -95,7 +95,7 @@ class Todo extends React.Component {
 }
 ReactDOM.render(
   <React.StrictMode>
-    <Todo />
+    <TodoApp />
   </React.StrictMode>,
   document.getElementById("root")
 );

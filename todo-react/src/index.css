@@ -6,50 +6,48 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-*{
-  font-size: large;
-}
 .container {
   background-color: #7b4cd4;
-  padding: 1vw;
+  padding: 2vw;
+  margin-left: 10vw;
   margin: 1.5vw;
   border-radius: 1.46vw;
+}
+#hidden {
+  text-align: center;
+  color: red;
+  font-size: larger;
+  visibility: hidden;
 }
 .heading {
   text-align: center;
   margin-top: 0.73vw;
 }
-#hidden {
-  text-align: center;
-  font-size: larger;
-}
 .row {
-  padding-left: 6vw;
+  padding: 1vw;
+  padding-left: 4vw;
 }
 span {
-  padding-right: 1.5vw;
+  padding-right: 1.3vw;
 }
 .grid-child {
   width: 20%;
   padding: 0.6vw;
 }
-
 table {
-  text-align: center;
-  max-width: 75%;
   border: 0.3vw solid #a570f0;
   background-color: white;
   color: black;
+  margin-left: 4vw;
+  max-width: 75%;
   text-align: center;
-  margin-top: 1.5vw;
-  margin-left: 6vw;
 }
 td {
+  background-color: white;
   padding: 1vw;
 }
 .material-icons {

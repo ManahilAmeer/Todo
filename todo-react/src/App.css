@@ -27,7 +27,51 @@
 .App-link {
   color: #61dafb;
 }
+.heading {
+  text-align: center;
+  margin-top: 0.73vw;
+}
+#hidden {
+  text-align: center;
 
+  font-size: larger;
+}
+.container {
+  background-color: #7b4cd4;
+  padding: 1vw;
+  margin: 1.5vw;
+  border-radius: 1.46vw;
+}
+.row {
+  padding: 1vw;
+
+  padding-left: 4vw;
+}
+span {
+  padding-right: 1.3vw;
+}
+.grid-child {
+  width: 20%;
+  padding: 0.6vw;
+}
+
+table {
+  border: 0.3vw solid #a570f0;
+  background-color: white;
+  color: black;
+  max-width: 75%;
+  text-align: center;
+}
+td {
+  padding: 1vw;
+}
+.material-icons {
+  cursor: default;
+}
+.material-icons:hover {
+  color: rgb(66, 66, 66);
+  transform: scale(1.25, 1.25);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,15 +1,14 @@
 import React, { createRef } from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import { MdDelete } from "react-icons/md";
-import "./index.css"
+import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "./TodoList";
 class TodoApp extends React.Component {
-  id = 0;
   inputRef = createRef();
   constructor(props) {
     super(props);
+    this.check=this.check.bind(this)
+    this.deleteTodoHandler=this.deleteTodoHandler.bind(this);
     this.state = {
       userInput: "",
       hidden: {
@@ -33,21 +32,50 @@ class TodoApp extends React.Component {
     } else {
       this.setState({ hidden: { visibility: "hidden" } });
       const userInput = {
-        id: this.id++,
         value: this.state.userInput,
         done: false,
         strikeThrough: {
           textDecoration: "none",
         },
       };
-      const todoList = [...this.state.todoList];
-      this.state.todoList.push(userInput);
-      this.setState({
-        // todoList:todoList,
-        userInput: "",
+      this.setState((state) => {
+        const list = state.todoList.concat(userInput);
+        return {
+          todoList: list,
+          userInput: "",
+        };
       });
-      // alert(this.state.todoList[0].value)
     }
+  }
+  check(key, checked) {
+    this.setState((state) => {
+      const todoList = state.todoList;
+      var done, strikeThrough;
+      if (!checked) {
+        done = true;
+        strikeThrough = {
+          textDecoration: "line-through",
+        };
+      } else {
+        done = false;
+        strikeThrough = {
+          textDecoration: "none",
+        };
+      }
+      todoList[key].done = done;
+      todoList[key].strikeThrough = strikeThrough;
+      return {
+        todoList: todoList,
+      };
+    });
+  }
+  deleteTodoHandler=(todoIndex)=>{
+    this.setState((state) => {
+      const list = state.todoList.filter((item, j) => todoIndex !== j);
+      return {
+        todoList:list,
+      };
+    });
   }
   _keyDown = (e) => {
     if (e.key === "Enter") {
@@ -86,7 +114,25 @@ class TodoApp extends React.Component {
                 </button>
               </div>
             </div>
-            <TodoList todos={this.state.todoList} deleteTodo={this.deleteTodo}/>
+            <table>
+              <tbody>
+                {this.state.todoList.map((item, index) => {
+                  return (
+                    <tr>
+                      <TodoList
+                        index={index}
+                        value={item.value}
+                        done={item.done}
+                        check={this.check}
+                        strikeThrough={item.strikeThrough}
+                        todos={this.state.todoList}
+                        deleteTodoHandler={this.deleteTodoHandler}
+                      />
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </header>
       </div>

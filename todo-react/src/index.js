@@ -1,6 +1,7 @@
 import React, { createRef } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "./TodoList";
 class TodoApp extends React.Component {
@@ -141,7 +142,7 @@ class TodoApp extends React.Component {
 }
 ReactDOM.render(
   <React.StrictMode>
-    <TodoApp />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

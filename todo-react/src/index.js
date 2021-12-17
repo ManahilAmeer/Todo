@@ -22,6 +22,9 @@ class TodoApp extends React.Component {
     document.addEventListener("keydown", this._keyDown);
     document.title = "To-do App";
   }
+  componentWillUnmount(){
+    document.removeEventListener("keydown")
+  }
   updateInput(value) {
     this.setState({ userInput: value });
   }
@@ -86,28 +89,28 @@ class TodoApp extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div class="heading">
+          <div className="heading">
             <h1>TODO App</h1>
           </div>
           <div id="hidden" style={this.state.hidden}>
             You have not entered any Item! Please enter something
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
+          <div className="container">
+            <div className="row">
+              <div className="col-6">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   value={this.state.userInput}
                   ref={this.inputRef}
                   onChange={(todo) => this.updateInput(todo.target.value)}
                   placeholder="What do you want to do today?"
                 />
               </div>
-              <div class="grid-child">
+              <div className="grid-child">
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={() => this.addItem()}
                 >
                   Add item
@@ -118,7 +121,7 @@ class TodoApp extends React.Component {
               <tbody>
                 {this.state.todoList.map((item, index) => {
                   return (
-                    <tr>
+                    <tr key={}>
                       <TodoList
                         index={index}
                         value={item.value}

@@ -1,9 +1,11 @@
 import React, { createRef } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { Provider } from "react-redux";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "./TodoList";
+import store from "./store";
 class TodoApp extends React.Component {
   inputRef = createRef();
   constructor(props) {
@@ -83,66 +85,13 @@ class TodoApp extends React.Component {
       this.addItem();
     }
   };
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <div class="heading">
-            <h1>TODO App</h1>
-          </div>
-          <div id="hidden" style={this.state.hidden}>
-            You have not entered any Item! Please enter something
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-                <input
-                  type="text"
-                  class="form-control"
-                  value={this.state.userInput}
-                  ref={this.inputRef}
-                  onChange={(todo) => this.updateInput(todo.target.value)}
-                  placeholder="What do you want to do today?"
-                />
-              </div>
-              <div class="grid-child">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  onClick={() => this.addItem()}
-                >
-                  Add item
-                </button>
-              </div>
-            </div>
-            <table>
-              <tbody>
-                {this.state.todoList.map((item, index) => {
-                  return (
-                    <tr>
-                      <TodoList
-                        index={index}
-                        value={item.value}
-                        done={item.done}
-                        check={this.check}
-                        strikeThrough={item.strikeThrough}
-                        todos={this.state.todoList}
-                        deleteTodoHandler={this.deleteTodoHandler}
-                      />
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </header>
-      </div>
-    );
-  }
 }
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
+
   document.getElementById("root")
 );

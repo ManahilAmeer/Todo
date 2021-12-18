@@ -1,40 +1,51 @@
 import "./logo.svg";
 import "./index.css";
-import TodoList from "./TodoList"
+import TodoList from "./TodoList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
-function App() {
+import { connect } from "react-redux";
+import { addItem, deleteTodoHandler, check } from "./reducer";
+const mapStateToProps = (state) => {
+  return {
+    todos: state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItem: (obj) => dispatch(addItem(obj)),
+    deleteTodoHandler: (id) => dispatch(deleteTodoHandler(id)),
+    // updateTodo: (obj) => dispatch(updateTodos(obj)),
+    check: (id) => dispatch(check(id)),
+  };
+};
+
+const App = (props) => {
   const [todoList, setTodoList] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [hidden, setHidden] = useState({
     visibility: "hidden",
   });
+
   const updateInput = (value) => {
     setUserInput(value);
   };
   const addItem = () => {
-    var visible = { visibility: "" };
-    if (userInput) {
+    if (userInput === "") {
+      setHidden({ visibility: "visible" });
+    } else {
       setHidden({ visibility: "hidden" });
-      const input = {
-        value: userInput,
+      props.addItem({
+        // id: Math.floor(Math.random() * 1000),
+        item: userInput,
         done: false,
         strikeThrough: {
           textDecoration: "none",
         },
-      };
-      const list = [...todoList];
-      list.push(input);
-      setTodoList(list);
-    } else {
-      setHidden({ visibility: "visible" });
+      });
+      setUserInput("");
     }
-    setUserInput("")
   };
 
-  const con = () => {
-    console.log(todoList);
-  };
   return (
     <>
       <header className="App-header">
@@ -68,17 +79,17 @@ function App() {
           </div>
           <table>
             <tbody>
-              {todoList.map((item, index) => {
+              {props.todos.map((item, index) => {
                 return (
                   <tr>
                     <TodoList
                       index={index}
-                      value={item.value}
+                      item={item.item}
                       done={item.done}
-                      // check={this.check}
+                      check={props.check}
                       strikeThrough={item.strikeThrough}
-                      todos={todoList}
-                      // deleteTodoHandler={this.deleteTodoHandler}
+                      // todos={todoList}
+                      deleteTodoHandler={props.deleteTodoHandler}
                     />
                   </tr>
                 );
@@ -90,5 +101,5 @@ function App() {
       {/* </div> */}
     </>
   );
-}
-export default App;
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

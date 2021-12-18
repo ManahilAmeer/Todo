@@ -107,7 +107,7 @@ class TodoApp extends React.Component {
                   placeholder="What do you want to do today?"
                 />
               </div>
-              <div className="grid-child">
+              <div className="col">
                 <button
                   type="submit"
                   className="btn btn-primary"
@@ -121,7 +121,7 @@ class TodoApp extends React.Component {
               <tbody>
                 {this.state.todoList.map((item, index) => {
                   return (
-                    <tr key={}>
+                    <tr key={index}>
                       <TodoList
                         index={index}
                         value={item.value}
